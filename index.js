@@ -15,5 +15,5 @@ var kitty = ck (options);
 
 kitty.getAllKitties(10)
     .then(kitties => {
-        console.log(kitties);
-    });
+        // console.log(kitties);
+    }).catch(console.error);

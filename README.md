@@ -12,6 +12,7 @@ kitty database kitty analysis
 }
 ```
 ##### Run `npm install`
+##### Start MongoDB Server
 ##### Run `npm start`
 
 ## Resources

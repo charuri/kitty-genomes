@@ -1,7 +1,7 @@
 {
   "name": "data-kitties",
   "version": "1.0.0",
-  "description": "",
+  "description": "kitty database kitty analysis",
   "main": "index.js",
   "scripts": {
     "test": "echo",
@@ -13,6 +13,16 @@
     "cryptokitties-contrib": "0.0.1",
     "ethers-meow": "0.0.3",
     "minimist": "^1.2.0",
+    "mongodb": "^3.0.0-rc0",
     "request": "^2.83.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charuri/kitty-genomes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/charuri/kitty-genomes/issues"
+  },
+  "homepage": "https://github.com/charuri/kitty-genomes#readme"
 }
