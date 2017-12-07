@@ -1,0 +1,18 @@
+{
+  "name": "data-kitties",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo",
+    "start": "node index.js"
+  },
+  "author": "@charuri",
+  "license": "ISC",
+  "dependencies": {
+    "cryptokitties-contrib": "0.0.1",
+    "ethers-meow": "0.0.3",
+    "minimist": "^1.2.0",
+    "request": "^2.83.0"
+  }
+}
