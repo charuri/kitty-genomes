@@ -11,6 +11,9 @@ var options = JSON.parse(fs.readFileSync('./credentials.json', 'utf8'));
 
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
+var mongoose = require('mongoose');
+
+mongoose.Promise = Promise; 
 
 // Connection URL
 var url = 'mongodb://localhost:27017/kitties';
