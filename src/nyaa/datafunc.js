@@ -11,6 +11,9 @@ const manager = new meow.Manager(provider);
 const options = JSON.parse(fs.readFileSync('./credentials.json', 'utf8'));
 const client = ck(options);
 
+// TODO
+function getKittyCount () {}
+
 /**
  * Generates and returns data of limit number of getAllKitties
  * @param {Number} limit

@@ -2,7 +2,7 @@ import fs from 'fs';
 import genKittyData from './nyaa/datafunc'
 
 // TODO make this a command argument parameter
-let limit = 10;
+let limit = 100;
 
 // TODO put data into mongo
 // var MongoClient = require('mongodb').MongoClient,
@@ -29,7 +29,7 @@ let limit = 10;
 
 // DO EVERYTHING HERE
 let data = genKittyData(limit, (data) => {
-    console.log(data);
+    // console.log(data);
     fs.writeFile('./kitties.json', JSON.stringify(data, null, 4), (error) => {
         /* handle error */
         if (error) {
