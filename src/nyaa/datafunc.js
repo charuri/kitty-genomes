@@ -1,11 +1,27 @@
+import meow from 'ethers-meow';
+import ethers from 'ethers';
+import ck from 'cryptokitties-contrib';
 import fs from 'fs';
+import parseArgs from 'minimist';
 import _ from 'lodash';
 import keysort from '../utils/keysort';
 
-export default function genKittyData (manager, client, limit) {
+const provider = ethers.providers.getDefaultProvider();
+const manager = new meow.Manager(provider);
+const options = JSON.parse(fs.readFileSync('./credentials.json', 'utf8'));
+const client = ck(options);
+
+/**
+ * Generates and returns data of limit number of getAllKitties
+ * @param {Number} limit
+ # @return {Object} data
+ */
+export default function genKittyData (limit, callback) {
+    console.log(`GENERATING ${limit} DATA KITTIES`);
     var kitties = [];
     var promise_kittens = [];
     var promise_genomes = [];
+    let results = {};
 
     for (var id = 1; id <= limit; id++) {
         promise_kittens.push(client.getKitten(id).then(kitten => {
@@ -30,14 +46,8 @@ export default function genKittyData (manager, client, limit) {
 
     Promise.all(promise_kittens).then(() => {
         Promise.all(promise_genomes).then(() => {
-            var output = {count: limit, kitties: keysort(kitties, 'id')};
-
-            fs.writeFile('./kitties.json', JSON.stringify(output, null, 4), (error) => {
-                /* handle error */
-                if (error) {
-                    console.log("There has been an error updating kitties.json: ", error);
-                }
-            });
+            results = {count: limit, kitties: keysort(kitties, 'id')};
+            return callback(results);
         }).catch(console.error);
     }).catch(console.error);
 }

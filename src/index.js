@@ -1,19 +1,10 @@
-import meow from 'ethers-meow';
-import ethers from 'ethers';
-import ck from 'cryptokitties-contrib';
 import fs from 'fs';
-import parseArgs from 'minimist';
 import genKittyData from './nyaa/datafunc'
 
-const provider = ethers.providers.getDefaultProvider();
-const manager = new meow.Manager(provider);
-const options = JSON.parse(fs.readFileSync('./credentials.json', 'utf8'));
-const client = ck(options);
-
+// TODO make this a command argument parameter
 let limit = 10;
 
-genKittyData(manager, client, limit);
-
+// TODO put data into mongo
 // var MongoClient = require('mongodb').MongoClient,
 //     assert = require('assert');
 // var mongoose = require('mongoose');
@@ -35,3 +26,14 @@ genKittyData(manager, client, limit);
 //   .then(() => {
 //
 //   })
+
+// DO EVERYTHING HERE
+let data = genKittyData(limit, (data) => {
+    console.log(data);
+    fs.writeFile('./kitties.json', JSON.stringify(data, null, 4), (error) => {
+        /* handle error */
+        if (error) {
+            console.log("There has been an error updating kitties.json: ", error);
+        }
+    });
+});
