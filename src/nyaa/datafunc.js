@@ -2,12 +2,12 @@ import fs from 'fs';
 import _ from 'lodash';
 import keysort from '../utils/keysort';
 
-export default function genKittyData (manager, client, limit) {
+export default function genKittyData (manager, client, start, end) {
     var kitties = [];
     var promise_kittens = [];
     var promise_genomes = [];
 
-    for (var id = 1; id <= limit; id++) {
+    for (var id = start; id <= end; id++) {
         promise_kittens.push(client.getKitten(id).then(kitten => {
             promise_genomes.push(manager.getKitty(id).then(kitty => {
                 kitties.push({
@@ -30,9 +30,9 @@ export default function genKittyData (manager, client, limit) {
 
     Promise.all(promise_kittens).then(() => {
         Promise.all(promise_genomes).then(() => {
-            var output = {count: limit, kitties: keysort(kitties, 'id')};
+            var output = {count: end-start+1, kitties: keysort(kitties, 'id')};
 
-            fs.writeFile('./kitties.json', JSON.stringify(output, null, 4), (error) => {
+            fs.writeFile('./kitties-'+start+'-'+end+'.json', JSON.stringify(output, null, 4), (error) => {
                 /* handle error */
                 if (error) {
                     console.log("There has been an error updating kitties.json: ", error);

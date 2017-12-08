@@ -12,7 +12,7 @@ kitty database kitty analysis
 }
 ```
 ##### 2. Run `npm install`
-##### 3. Run `npm start`
+##### 3. Run `npm --start=<first index> --end=<last index> start`
 
 ## Resources
 - [ethers-meow](https://github.com/ricmoo/ethers-meow)

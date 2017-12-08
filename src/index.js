@@ -10,9 +10,16 @@ const manager = new meow.Manager(provider);
 const options = JSON.parse(fs.readFileSync('./credentials.json', 'utf8'));
 const client = ck(options);
 
-let limit = 10;
+//let limit = 10;
+let start = process.env.npm_config_start;
+let end = process.env.npm_config_end;
 
-genKittyData(manager, client, limit);
+if(end < start){
+  console.log("start must be less than or equal to end");
+  process.exit();
+}  
+
+genKittyData(manager, client, start, end);
 
 // var MongoClient = require('mongodb').MongoClient,
 //     assert = require('assert');
