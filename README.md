@@ -2,7 +2,7 @@
 kitty database kitty analysis
 
 ## Getting Started
-##### Create `credentials.json` file in the root folder and add your jwt authorization in this format.
+##### 1. Create `credentials.json` file in the root folder and add your jwt authorization in this format.
 ```javascript
 {
   "url": "https://api.cryptokitties.co/",
@@ -11,9 +11,8 @@ kitty database kitty analysis
   }
 }
 ```
-##### Run `npm install`
-##### Create/Start MongoDB Server
-##### Run `npm start`
+##### 2. Run `npm install`
+##### 3. Run `npm start`
 
 ## Resources
 - [ethers-meow](https://github.com/ricmoo/ethers-meow)

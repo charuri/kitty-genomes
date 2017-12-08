@@ -1,47 +1,8 @@
-var meow = require('ethers-meow');
-var ethers = require('ethers');
-var provider = ethers.providers.getDefaultProvider();
-var manager = new meow.Manager(provider);
+import fs from 'fs';
+import _ from 'lodash';
+import keysort from '../utils/keysort';
 
-var ck = require('cryptokitties-contrib');
-
-var fs = require('fs')
-var parseArgs = require('minimist');
-var options = JSON.parse(fs.readFileSync('./credentials.json', 'utf8'));
-var _ = require('lodash');
-
-// import keysort from './utils/keysort.js';
-
-// var MongoClient = require('mongodb').MongoClient,
-//     assert = require('assert');
-// var mongoose = require('mongoose');
-//
-// mongoose.Promise = Promise;
-//
-// // Connection URL
-// var url = 'mongodb://localhost:27017/kitties';
-
-// Use connect method to connect to the server
-// MongoClient.connect(url, function(err, db) {
-//   assert.equal(null, err);
-//   console.log("Connected successfully to server");
-//
-//   db.close();
-// });
-// const db = new Db('kitties', new Server('localhost', 27017));
-// db.open()
-//   .then(() => {
-//
-//   })
-
-console.log('KITTY GENOMES');
-
-var client = ck(options);
-let limit = 10;
-
-genKittyData(client, limit);
-
-function genKittyData (client, limit) {
+export default function genKittyData (manager, client, limit) {
     var kitties = [];
     var promise_kittens = [];
     var promise_genomes = [];
@@ -69,7 +30,7 @@ function genKittyData (client, limit) {
 
     Promise.all(promise_kittens).then(() => {
         Promise.all(promise_genomes).then(() => {
-            var output = {count: limit, kitties: kitties};
+            var output = {count: limit, kitties: keysort(kitties, 'id')};
 
             fs.writeFile('./kitties.json', JSON.stringify(output, null, 4), (error) => {
                 /* handle error */

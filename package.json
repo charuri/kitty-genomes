@@ -1,15 +1,17 @@
 {
-    "name": "data-kitties",
+    "name": "kitty-genomes",
     "version": "1.0.0",
     "description": "kitty database kitty analysis",
-    "main": "index.js",
+    "main": "./dist/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "build": "./node_modules/.bin/babel  ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files -d ./dist",
+        "start": "npm run build && node ./dist/index"
     },
-    "author": "@charuri",
+    "author": "@charuri,@dz17,@dijidori",
     "license": "ISC",
     "dependencies": {
+        "babel-loader": "^7.1.2",
         "cryptokitties-contrib": "0.0.1",
         "ethers-meow": "0.0.3",
         "lodash": "^4.17.4",
@@ -20,7 +22,11 @@
         "nodemon": "^1.12.5",
         "request": "^2.83.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "babel-cli": "^6.24.0",
+        "babel-core": "^6.26.0",
+        "babel-preset-env": "^1.6.1"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/charuri/kitty-genomes.git"
