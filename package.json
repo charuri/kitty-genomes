@@ -1,31 +1,32 @@
 {
-  "name": "data-kitties",
-  "version": "1.0.0",
-  "description": "kitty database kitty analysis",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo",
-    "start": "node index.js"
-  },
-  "author": "@charuri",
-  "license": "ISC",
-  "dependencies": {
-    "cryptokitties-contrib": "0.0.1",
-    "ethers-meow": "0.0.3",
-    "minimist": "^1.2.0",
-    "mocha": "^4.0.1",
-    "mongodb": "^3.0.0-rc0",
-    "mongoose": "^4.13.6",
-    "nodemon": "^1.12.5",
-    "request": "^2.83.0"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/charuri/kitty-genomes.git"
-  },
-  "bugs": {
-    "url": "https://github.com/charuri/kitty-genomes/issues"
-  },
-  "homepage": "https://github.com/charuri/kitty-genomes#readme"
+    "name": "data-kitties",
+    "version": "1.0.0",
+    "description": "kitty database kitty analysis",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "@charuri",
+    "license": "ISC",
+    "dependencies": {
+        "cryptokitties-contrib": "0.0.1",
+        "ethers-meow": "0.0.3",
+        "lodash": "^4.17.4",
+        "minimist": "^1.2.0",
+        "mocha": "^4.0.1",
+        "mongodb": "^3.0.0-rc0",
+        "mongoose": "^4.13.6",
+        "nodemon": "^1.12.5",
+        "request": "^2.83.0"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/charuri/kitty-genomes.git"
+    },
+    "bugs": {
+        "url": "https://github.com/charuri/kitty-genomes/issues"
+    },
+    "homepage": "https://github.com/charuri/kitty-genomes#readme"
 }
